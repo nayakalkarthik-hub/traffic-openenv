@@ -1,0 +1,10 @@
+[project]
+name = "traffic-light-env"
+version = "1.0.0"
+description = "Traffic Light RL OpenEnv API"
+authors = [{name = "Your Name"}]
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
