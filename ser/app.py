@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from env import TrafficMedEnv
+import uvicorn
 
 app = FastAPI()
 env = TrafficMedEnv()
@@ -22,3 +23,11 @@ def step(action: Action):
         "done": done,
         "info": info
     }
+
+# ✅ REQUIRED main() function
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
+# ✅ REQUIRED entry point
+if __name__ == "__main__":
+    main()
