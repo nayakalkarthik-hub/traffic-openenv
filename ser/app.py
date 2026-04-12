@@ -1,21 +1,19 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from env import TrafficMedEnv   # ✅ FIXED import
+from env import TrafficMedEnv
+import uvicorn
 
 app = FastAPI()
 env = TrafficMedEnv()
 
-# Request model
 class Action(BaseModel):
     action: int
 
-# Reset environment
 @app.post("/reset")
 def reset():
     state = env.reset()
     return {"state": state}
 
-# Take a step
 @app.post("/step")
 def step(action: Action):
     state, reward, done, info = env.step(action.action)
@@ -25,3 +23,11 @@ def step(action: Action):
         "done": done,
         "info": info
     }
+
+# ✅ REQUIRED for OpenEnv
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
+# ✅ REQUIRED entry point
+if __name__ == "__main__":
+    main()
