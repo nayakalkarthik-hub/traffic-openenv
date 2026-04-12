@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from server.env import TrafficMedEnv   # ✅ FIXED import
+from env import TrafficMedEnv   # ✅ FIXED import
 
 app = FastAPI()
 env = TrafficMedEnv()
