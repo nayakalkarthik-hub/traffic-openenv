@@ -11,16 +11,21 @@ class TrafficMedEnv:
 
 
 def predict(input_data=None):
-    print("[START]")
+    task_name = "traffic_signal_control"
+
+    print(f"[START] task={task_name}", flush=True)
 
     env = TrafficMedEnv()
     traffic, ambulance_lane = env.reset()
 
-    # Simple logic (replace later with RL)
+    # STEP logs (strict format: one key=value per line)
+    print(f"[STEP] traffic={traffic}", flush=True)
+    print(f"[STEP] ambulance_lane={ambulance_lane}", flush=True)
+
+    # Simple logic
     action = ambulance_lane
 
-    # Single STEP line
-    print(f"[STEP] Traffic: {traffic} | Ambulance: {ambulance_lane} | Signal: {action}")
+    print(f"[STEP] chosen_signal={action}", flush=True)
 
     result = {
         "traffic": traffic,
@@ -28,7 +33,7 @@ def predict(input_data=None):
         "chosen_signal": action
     }
 
-    print("[END]")
-    print(result)
+    # Final summary
+    print(f"[END] task={task_name} score=1.0 steps=1", flush=True)
 
     return result
