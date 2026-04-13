@@ -16,13 +16,11 @@ def predict(input_data=None):
     env = TrafficMedEnv()
     traffic, ambulance_lane = env.reset()
 
-    print(f"[STEP] Traffic levels: {traffic}")
-    print(f"[STEP] Ambulance in lane: {ambulance_lane}")
-
     # Simple logic (replace later with RL)
     action = ambulance_lane
 
-    print(f"[STEP] Chosen signal: {action}")
+    # Single STEP line
+    print(f"[STEP] Traffic: {traffic} | Ambulance: {ambulance_lane} | Signal: {action}")
 
     result = {
         "traffic": traffic,
